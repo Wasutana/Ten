@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Asset Inventory | Dr. Alexander Volt</title>
+    <meta name="description" content="ระบบจัดการอุปกรณ์ไฟฟ้าอัจฉริยะ 100 รายการ โดย Dr. Alexander Volt">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span>VoltTrack</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <span class="icon">👤</span> <span>โปรไฟล์</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="inventory.html" class="nav-link active">
+                            <span class="icon">🔌</span> <span>รายการอุปกรณ์</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header style="margin-bottom: 3rem;">
+                <h1 style="font-size: 2.5rem; font-weight: 800;">คลังอุปกรณ์ไฟฟ้า</h1>
+                <p style="color: var(--text-muted);">ระบบติดตามสถานะอุปกรณ์ทั้งหมด 100 รายการแบบ Real-time</p>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">อุปกรณ์ทั้งหมด</span>
+                    <span class="stat-value" id="count-total">100</span>
+                </div>
+                <div class="stat-card good">
+                    <span class="stat-label">สภาพดี</span>
+                    <span class="stat-value" id="count-good">75</span>
+                </div>
+                <div class="stat-card pending">
+                    <span class="stat-label">รอตรวจสอบ</span>
+                    <span class="stat-value" id="count-pending">10</span>
+                </div>
+                <div class="stat-card damaged">
+                    <span class="stat-label">เสีย/ชำรุด</span>
+                    <span class="stat-value" id="count-damaged">15</span>
+                </div>
+            </section>
+
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                <section class="chart-section">
+                    <h2 style="margin-bottom: 1.5rem;">ภาพรวมสถานะ</h2>
+                    <div style="height: 300px; position: relative;">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="inventory-list">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2>รายการอุปกรณ์</h2>
+                        <div style="position: relative;">
+                            <input type="text" id="device-search" placeholder="ค้นหา..." style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.6rem 1rem; border-radius: 12px; color: white; outline: none;">
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="device-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ชื่ออุปกรณ์</th>
+                                    <th>สถานะ</th>
+                                    <th>ผู้ดูแล</th>
+                                </tr>
+                            </thead>
+                            <tbody id="device-list-body">
+                                <!-- Data injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
